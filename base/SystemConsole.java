@@ -1,7 +1,6 @@
 package base;
 
 import java.io.Console;
-import java.util.Scanner;
 
 public class SystemConsole {
 
@@ -12,6 +11,7 @@ public class SystemConsole {
  
         // using Console
         Console console = System.console();
+        Console console2 = System.console();
         if (console == null) {
             System.out.println("No console: not in interactive mode!");
             System.exit(0);
@@ -19,6 +19,7 @@ public class SystemConsole {
  
         System.out.print("Enter your username: ");
         String username = console.readLine();
+        String username1 = console2.readLine();
          
         System.out.print("Enter your password: ");
         char[] password = console.readPassword();

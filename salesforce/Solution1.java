@@ -1,24 +1,16 @@
-/*
 package salesforce;
 
 import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.regex.*;
-
 
 class Result {
 
-    */
 /*
      * Complete the 'doit' function below.
      *
      * The function is expected to return an INTEGER.
      * The function accepts INTEGER num as parameter.
-     *//*
+
+*/
 
 
     public static int doit(int num) {
@@ -32,7 +24,7 @@ class Result {
 
         for( int j=0;j<l;j++)
         {
-            Char c = chars[j];
+            char c = chars[j];
             String c1 = String.valueOf(c);
             if (getValidNo(c1))
             {
@@ -66,7 +58,8 @@ class Result {
                 }
             }
 
-            String s1 = String.valueOf(chars[i])String.valueOf(chars[i+1]);
+            String s1 = String.valueOf(chars[i]);
+            String.valueOf(chars[i+1]);
             if (getValidNo(s1))
             {
                 success=true;
@@ -111,7 +104,7 @@ class Result {
 }
 
 
-public class Solution {
+public class Solution1 {
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
@@ -127,4 +120,3 @@ public class Solution {
         bufferedWriter.close();
     }
 }
-*/

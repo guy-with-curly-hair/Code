@@ -6,6 +6,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -13,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-class Result {
+class HttpUrlJsonparsing {
 
     /*
      * Complete the 'calculateNAV' function below.
@@ -39,6 +41,8 @@ class Result {
           
           String allPriceAPi = "https://raw.githubusercontent.com/arcjsonapi/HoldingValueCalculator/master/api/pricing";
           String priceResponse  = getApiData(allPriceAPi);
+
+          // JSONArray has JSONObject == JSONArray[i]
 
               JSONArray jsonArray = new JSONArray(priceResponse);
               for(int i =0; i< jsonArray.length(); i++){
@@ -69,6 +73,8 @@ return navValue;
     
     public static void mapPriceToResponse(String priceResponse){
         try{
+            // GsonBuilder.create()
+            // gson.fromJson(reposne, Class) return class[]
         Gson gson = new GsonBuilder().create();
         PriceData[] r = gson.fromJson(priceResponse , PriceData[].class);
         
@@ -125,16 +131,23 @@ return navValue;
     public static String getApiData(String urll){
         try{
         URL url = new URL(urll);
-        url.openConnection();
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.connect();
         
         int responseCode = conn.getResponseCode();
       //  System.out.println("response code ="+responseCode);
-        
-        String inline ="";
-        Scanner scanner = new Scanner(url.openStream());
+
+            DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
+            wr.writeBytes("myname");
+            wr.flush();
+            wr.close();
+            DataInputStream in = new DataInputStream(conn.getInputStream());
+             Scanner scanner = new Scanner(in);
+
+            String inline ="";
+       // Scanner scanner = new Scanner(url.openStream());
+           // Scanner scanner = new Scanner(conn.getInputStream());
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
         
@@ -247,5 +260,26 @@ return navValue;
         
         
     }
+
+
+    // Setting basic post request
+  /*con.setRequestMethod("POST");
+  con.setRequestProperty("User-Agent", USER_AGENT);
+  con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+  con.setRequestProperty("Content-Type","application/json");
+
+    String postJsonData = "{"id":5,"countryName":"USA","population":8000}";
+
+    // Send post request
+  con.setDoOutput(true);
+    DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+  wr.writeBytes(postJsonData);
+  wr.flush();
+  wr.close();
+
+    int responseCode = con.getResponseCode();
+  System.out.println("nSending 'POST' request to URL : " + url);
+  System.out.println("Post Data : " + postJsonData);
+  System.out.println("Response Code : " + responseCode);*/
 
 }

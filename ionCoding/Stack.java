@@ -1,12 +1,10 @@
 package ionCoding;
 
-import javax.swing.*;
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Stack {
+class Stack1 {
 
 
     static Queue<Integer> q = new LinkedList();
@@ -26,7 +24,7 @@ public class Stack {
     //get() --put everything in another queue except last element & give back last element
 
 
-    private Stack() {
+    public Stack1() {
         // getSingleton();
     }
 

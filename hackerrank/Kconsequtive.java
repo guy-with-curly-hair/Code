@@ -118,6 +118,8 @@ public class Kconsequtive {
     public static String algo(List<Pair> lp, int threshold)
     {
 
+        String a = "abacaba";//aabcbc aazb
+
         System.out.println( "INSIDE ALGO ");
         //reduce
         List<Pair> reducedList= lp.stream().filter(arg -> (arg.getCount() < threshold)).collect(Collectors.toList());

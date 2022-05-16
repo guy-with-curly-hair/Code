@@ -51,9 +51,10 @@ class TestClass1 {
         biConsumer.accept(weights, inputWeights);
 
 
-        List inputDronelist = Arrays.stream(inputDrones).boxed().collect(Collectors.toList());
+        List inputDronelist = Arrays.stream(inputDrones).
+                boxed().collect(Collectors.toList());
         //another way
-        List<Integer> inputDronelist1 = Arrays.stream(drones).map( i -> parseInt(i)).collect(Collectors.toList());
+        List<Integer> inputDronelist1 = Arrays.stream(drones).map( i ->Integer.valueOf(i)).collect(Collectors.toList());
 
         List inputWeightList = Arrays.stream(inputWeights).boxed().collect(Collectors.toList());
         //another way
